@@ -1,0 +1,92 @@
+name: dsfr
+locale: fr
+include_search_page: true
+search_index_only: false
+search_highlight: true
+search_share: true
+search_boost: 2
+search_languages: ['fr']
+template_dir: templates
+static_dir: static
+features:
+  # Fonctionnalités de recherche
+  - search.highlight
+  - search.share
+  - search.suggest
+  - search.zoom
+  - search.follow
+  - search.integrate
+  - search.toc
+  - search.navigation
+  - search.navigation.tabs
+  - search.navigation.sections
+  - search.navigation.expand
+  - search.navigation.top
+  - search.navigation.footer
+  - search.navigation.highlight
+  - search.navigation.share
+  - search.navigation.suggest
+  - search.navigation.zoom
+  - search.navigation.follow
+  - search.navigation.integrate
+  - search.navigation.toc
+
+  # Fonctionnalités de navigation
+  - navigation.tabs
+  - navigation.sections
+  - navigation.expand
+  - navigation.top
+  - navigation.footer
+  
+  # Table des matières
+  - toc.follow
+  - toc.integrate
+  
+  # Fonctionnalités de contenu
+  - content.code.copy
+  - content.code.annotate
+  - content.tabs.link
+  - content.tabs.tabs
+  - content.tabs.flow
+  - content.tabs.auto
+  - content.tabs.icons
+  - content.tabs.icons.flow
+  - content.tabs.icons.auto
+  - content.tabs.icons.tabs
+  - content.tabs.icons.link
+  - content.tabs.icons.annotate
+  - content.tabs.icons.copy
+  - content.tabs.icons.suggest
+  - content.tabs.icons.zoom
+  - content.tabs.icons.highlight
+  - content.tabs.icons.share
+  - content.tabs.icons.follow
+  - content.tabs.icons.integrate
+  - content.tabs.icons.toc
+  - content.tabs.icons.navigation
+  - content.tabs.icons.navigation.tabs
+  - content.tabs.icons.navigation.sections
+  - content.tabs.icons.navigation.expand
+  - content.tabs.icons.navigation.top
+  - content.tabs.icons.navigation.footer
+  - content.tabs.icons.navigation.highlight
+  - content.tabs.icons.navigation.share
+  - content.tabs.icons.navigation.suggest
+  - content.tabs.icons.navigation.zoom
+  - content.tabs.icons.navigation.follow
+  - content.tabs.icons.navigation.integrate
+  - content.tabs.icons.navigation.toc
+  - content.tabs.icons.navigation.navigation
+  - content.tabs.icons.navigation.navigation.tabs
+  - content.tabs.icons.navigation.navigation.sections
+  - content.tabs.icons.navigation.navigation.expand
+  - content.tabs.icons.navigation.navigation.top
+  - content.tabs.icons.navigation.navigation.footer
+  - content.tabs.icons.navigation.navigation.highlight
+  - content.tabs.icons.navigation.navigation.share
+  - content.tabs.icons.navigation.navigation.suggest
+  - content.tabs.icons.navigation.navigation.zoom
+  - content.tabs.icons.navigation.navigation.follow
+  - content.tabs.icons.navigation.navigation.integrate
+  - content.tabs.icons.navigation.navigation.toc
+  - content.tabs.icons.navigation.navigation.navigation 

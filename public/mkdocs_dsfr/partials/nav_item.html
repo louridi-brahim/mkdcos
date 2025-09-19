@@ -1,0 +1,60 @@
+{% macro render_nav(items, parent_id='', config=None) %}
+<ul class="fr-sidemenu__list">
+    {% for item in items %}
+        {% set item_id = (parent_id ~ '-' ~ loop.index) if parent_id else loop.index|string %}
+        
+        {# Fonction récursive pour vérifier s'il y a un élément actif dans les enfants #}
+        {% set has_active_descendant = false %}
+        {% if item.children %}
+            {% for child in item.children %}
+                {% if child.active %}
+                    {% set has_active_descendant = true %}
+                {% elif child.children %}
+                    {% for nested_child in child.children %}
+                        {% if nested_child.active %}
+                            {% set has_active_descendant = true %}
+                        {% elif nested_child.children %}
+                            {% for deep_child in nested_child.children %}
+                                {% if deep_child.active %}
+                                    {% set has_active_descendant = true %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        
+        {# Ne développer que si l'item lui-même est actif OU s'il contient un descendant actif #}
+        {% set should_expand = item.active or has_active_descendant %}
+        
+        <li class="fr-sidemenu__item">
+            {% if item.children and item.children|length > 0 %}
+                <button class="fr-sidemenu__btn{% if item.active %} fr-sidemenu__btn--active{% endif %}" 
+                        aria-expanded="{% if should_expand %}true{% else %}false{% endif %}" 
+                        aria-controls="fr-sidemenu-{{ item_id }}">
+                    {{ item.title }}
+                </button>
+                <div class="fr-collapse{% if should_expand %} fr-collapse--expanded{% endif %}" 
+                     id="fr-sidemenu-{{ item_id }}">
+                    {{ render_nav(item.children, item_id, config) }}
+                </div>
+            {% elif item.url %}
+                <a class="fr-sidemenu__link{% if item.active %} fr-sidemenu__link--active{% endif %}" 
+                   href="{{ config.site_url }}{{ item.url }}" 
+                   {% if item.active %}aria-current="page"{% endif %}>
+                    {{ item.title }}
+                </a>
+            {% else %}
+                <span class="fr-sidemenu__link{% if item.active %} fr-sidemenu__link--active{% endif %}">
+                    {{ item.title }}
+                </span>
+            {% endif %}
+        </li>
+    {% endfor %}
+    {# Ajout d'un élément invisible si la liste est vide pour éviter les erreurs DSFR #}
+    {% if items|length == 0 %}
+        <li style="display:none"></li>
+    {% endif %}
+</ul>
+{% endmacro %}

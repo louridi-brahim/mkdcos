@@ -1,0 +1,163 @@
+{# 
+  Composants réutilisables DSFR
+  Centralise les éléments communs pour faciliter la maintenance
+#}
+
+{# Composant : Alert DSFR #}
+{% macro dsfr_alert(type='info', title='', message='', dismissible=false) %}
+  <div class="fr-alert fr-alert--{{ type }}{% if dismissible %} fr-alert--sm{% endif %}">
+    {% if title %}
+      <p class="fr-alert__title">{{ title }}</p>
+    {% endif %}
+    {% if message %}
+      <p>{{ message }}</p>
+    {% endif %}
+    {% if dismissible %}
+      <button class="fr-btn--close fr-btn" aria-controls="fr-alert-{{ loop.index }}" title="Masquer le message">
+        Masquer le message
+      </button>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{# Composant : Bouton DSFR #}
+{% macro dsfr_button(text, url='#', type='primary', size='', icon='', external=false, class='') %}
+  {% set btn_class = 'fr-btn' %}
+  {% if type != 'primary' %}{% set btn_class = btn_class ~ ' fr-btn--' ~ type %}{% endif %}
+  {% if size %}{% set btn_class = btn_class ~ ' fr-btn--' ~ size %}{% endif %}
+  {% if icon %}{% set btn_class = btn_class ~ ' fr-btn--icon-left' %}{% endif %}
+  {% if class %}{% set btn_class = btn_class ~ ' ' ~ class %}{% endif %}
+  
+  <a href="{{ url }}" 
+     class="{{ btn_class }}"
+     {% if external %}target="_blank" rel="noopener"{% endif %}
+     {% if icon %}data-icon="{{ icon }}"{% endif %}>
+    {{ text }}
+  </a>
+{% endmacro %}
+
+{# Composant : Card DSFR #}
+{% macro dsfr_card(title='', content='', url='', image='', badge='', class='') %}
+  <div class="fr-card{% if url %} fr-enlarge-link{% endif %}{% if class %} {{ class }}{% endif %}">
+    {% if image %}
+      <div class="fr-card__header">
+        <div class="fr-card__img">
+          <img src="{{ image }}" alt="" />
+        </div>
+      </div>
+    {% endif %}
+    <div class="fr-card__body">
+      <div class="fr-card__content">
+        {% if badge %}
+          <p class="fr-badge fr-badge--sm">{{ badge }}</p>
+        {% endif %}
+        {% if title %}
+          <h3 class="fr-card__title">
+            {% if url %}
+              <a href="{{ url }}" class="fr-card__link">{{ title }}</a>
+            {% else %}
+              {{ title }}
+            {% endif %}
+          </h3>
+        {% endif %}
+        {% if content %}
+          <p class="fr-card__desc">{{ content }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{# Composant : Breadcrumb DSFR #}
+{% macro dsfr_breadcrumb(items) %}
+  <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
+    <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-1">
+      Voir le fil d'Ariane
+    </button>
+    <div class="fr-collapse" id="breadcrumb-1">
+      <ol class="fr-breadcrumb__list">
+        {% for item in items %}
+          <li>
+            {% if not loop.last and item.url %}
+              <a class="fr-breadcrumb__link" href="{{ item.url }}">{{ item.title }}</a>
+            {% else %}
+              <a class="fr-breadcrumb__link" aria-current="page">{{ item.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </nav>
+{% endmacro %}
+
+{# Composant : Badge DSFR #}
+{% macro dsfr_badge(text, type='info', size='') %}
+  {% set badge_class = 'fr-badge' %}
+  {% if type != 'info' %}{% set badge_class = badge_class ~ ' fr-badge--' ~ type %}{% endif %}
+  {% if size %}{% set badge_class = badge_class ~ ' fr-badge--' ~ size %}{% endif %}
+  
+  <p class="{{ badge_class }}">{{ text }}</p>
+{% endmacro %}
+
+{# Composant : Tag DSFR #}
+{% macro dsfr_tag(text, url='', icon='', class='') %}
+  {% set tag_class = 'fr-tag' %}
+  {% if class %}{% set tag_class = tag_class ~ ' ' ~ class %}{% endif %}
+  
+  {% if url %}
+    <a href="{{ url }}" class="{{ tag_class }}">
+      {% if icon %}<span class="fr-icon-{{ icon }}" aria-hidden="true"></span>{% endif %}
+      {{ text }}
+    </a>
+  {% else %}
+    <p class="{{ tag_class }}">
+      {% if icon %}<span class="fr-icon-{{ icon }}" aria-hidden="true"></span>{% endif %}
+      {{ text }}
+    </p>
+  {% endif %}
+{% endmacro %}
+
+{# Composant : Container DSFR #}
+{% macro dsfr_container(content, fluid=false, class='') %}
+  <div class="fr-container{% if fluid %}-fluid{% endif %}{% if class %} {{ class }}{% endif %}">
+    {{ content }}
+  </div>
+{% endmacro %}
+
+{# Composant : Grid DSFR #}
+{% macro dsfr_grid_start(gutters=true, class='') %}
+  <div class="fr-grid-row{% if gutters %} fr-grid-row--gutters{% endif %}{% if class %} {{ class }}{% endif %}">
+{% endmacro %}
+
+{% macro dsfr_grid_col(size='12', breakpoint='', offset='', class='') %}
+  {% set col_class = 'fr-col-' ~ size %}
+  {% if breakpoint %}{% set col_class = col_class ~ ' fr-col-' ~ breakpoint ~ '-' ~ size %}{% endif %}
+  {% if offset %}{% set col_class = col_class ~ ' fr-col-offset-' ~ offset %}{% endif %}
+  {% if class %}{% set col_class = col_class ~ ' ' ~ class %}{% endif %}
+  
+  <div class="{{ col_class }}">
+{% endmacro %}
+
+{% macro dsfr_grid_end() %}
+  </div></div>
+{% endmacro %}
+
+{# Composant : Footer links helper #}
+{% macro dsfr_footer_link(text, url, external=false) %}
+  <a class="fr-footer__link" 
+     href="{{ url }}"
+     {% if external %}target="_blank" rel="noopener"{% endif %}>
+    {{ text }}
+  </a>
+{% endmacro %}
+
+{# Composant : Header tools helper #}
+{% macro dsfr_header_tool(text, url, external=false, class='fr-btn--tertiary-no-outline') %}
+  <li>
+    <a class="fr-btn {{ class }}" 
+       href="{{ url }}"
+       {% if external %}target="_blank" rel="noopener"{% endif %}>
+      {{ text }}
+    </a>
+  </li>
+{% endmacro %}

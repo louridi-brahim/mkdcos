@@ -1,0 +1,47 @@
+site_name: Documentation Cloud π
+site_description: Direction de la Transformation Numérique du ministère de l'Intérieur
+site_author: SCSC
+site_url: http://10.224.165.17/public/
+theme:
+  name: null
+  custom_dir: mkdocs_dsfr
+  language: fr
+  features:
+  - navigation.tabs
+  - navigation.sections
+  - navigation.expand
+  - search.highlight
+  - search.share
+  - search.suggest
+  - content.code.copy
+plugins:
+- search:
+    lang: fr
+    separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+    prebuild_index: true
+    indexing: full
+extra:
+  version:
+    provider: mike
+  social:
+  - icon: fontawesome/brands/gitlab
+    link: https://gitlab.forge-dc.cloudmi.minint.fr/communautes/terraforge/documentation/coaching/mkdocs-poc
+extra_css:
+- static/css/dsfr.min.css
+- static/css/utility.min.css
+- static/css/custom.css
+extra_javascript:
+- static/js/dsfr.module.min.js
+- static/js/dsfr.nomodule.min.js
+
+docs_dir: docs
+site_dir: site
+nav:
+- Documentation Cloud π: index.md
+- Roles:
+    Concepteur:
+      Vue d'ensemble: concepteur/index.md
+      Référence:
+      - Api: concepteur/reference/api/index.md
+      - Est Il Possible De Creer Des Gabarits Personnalises Sur La Plateforme Cloud Π: concepteur/reference/est-il-possible-de-creer-des-gabarits-personnalises-sur-la-plateforme-cloud-π/index.md
+      - Pods: concepteur/reference/pods/index.md

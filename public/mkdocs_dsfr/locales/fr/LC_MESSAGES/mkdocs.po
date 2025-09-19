@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mkdocs-dsfr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-19 12:00+0000\n"
+"PO-Revision-Date: 2024-03-19 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Table of contents"
+msgstr "Table des matières"
+
+msgid "Navigation"
+msgstr "Navigation"
+
+msgid "Source"
+msgstr "Source"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "Last updated"
+msgstr "Dernière mise à jour"
+
+msgid "Created with"
+msgstr "Créé avec"
+
+msgid "and"
+msgstr "et"
+
+msgid "by"
+msgstr "par"
+
+msgid "on"
+msgstr "le"
+
+msgid "Search results"
+msgstr "Résultats de recherche"
+
+msgid "No results found"
+msgstr "Aucun résultat trouvé"
+
+msgid "Searching..."
+msgstr "Recherche en cours..."
+
+msgid "Search for"
+msgstr "Rechercher"
+
+msgid "Search in"
+msgstr "Rechercher dans"
+
+msgid "Search results for"
+msgstr "Résultats de recherche pour"
+
+msgid "No results found for"
+msgstr "Aucun résultat trouvé pour"
+
+msgid "Please enter at least 3 characters"
+msgstr "Veuillez entrer au moins 3 caractères"
+
+msgid "Search in progress..."
+msgstr "Recherche en cours..."
+
+msgid "Search completed"
+msgstr "Recherche terminée"
+
+msgid "Search failed"
+msgstr "La recherche a échoué"
+
+msgid "Search results for:"
+msgstr "Résultats de recherche pour :"
+
+msgid "No results found for:"
+msgstr "Aucun résultat trouvé pour :"
+
+msgid "Please enter at least 3 characters to search"
+msgstr "Veuillez entrer au moins 3 caractères pour rechercher"
+
+msgid "Search in progress..."
+msgstr "Recherche en cours..."
+
+msgid "Search completed"
+msgstr "Recherche terminée"
+
+msgid "Search failed"
+msgstr "La recherche a échoué" 
